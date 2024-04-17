@@ -10,12 +10,10 @@ function getNewTransactions() {
   const tasksRange = tasksSheet?.getRange('A2:J')
   let tasks = tasksRange?.getValues();
   tasks = tasks?.filter(row => row[typeCol] !== "")
-  //tasks?.sort((a, b) => a[0] - b[0])
 
   const prevTasksRange = ss.getSheetByName(prevDataSheetName)?.getRange('A2:J')
   let prevTasks = prevTasksRange?.getValues()
   prevTasks = prevTasks?.filter(row => row[typeCol] !== "")
-  //prevTasks?.sort((a, b) => a[0] - b[0])
 
   //Check which tasks are new
   let newTasks: any[][] = []
@@ -36,7 +34,7 @@ function getNewTransactions() {
     console.log(`something funky happened with the task lengths`)
   }
 }
-9
+
 function emailNewTasks(tasks: any[][]) {
   const emailsColumn = SpreadsheetApp.getActive().getSheetByName('Data')?.getRange('C2:C').getValues();
   if (!emailsColumn) {
